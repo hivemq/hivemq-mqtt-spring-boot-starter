@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  net.skobow.spring.hivemq.autoconfigure.HiveMQMqttAutoconfiguration
