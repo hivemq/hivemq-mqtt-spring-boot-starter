@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class HiveMQMqttAutoconfiguration {
+public class HiveMQMqttAutoConfiguration {
 
     @Bean
     public MqttClient mqttClient() {
