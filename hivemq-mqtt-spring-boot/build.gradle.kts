@@ -3,8 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation(rootProject.libs.hivemq.client)
+    annotationProcessor(rootProject.libs.spring.boot.configuration.processor)
 
+    implementation(rootProject.libs.bcpkix.lts8on)
+    implementation(rootProject.libs.hivemq.client)
+    implementation(rootProject.libs.slf4j.api)
     implementation(rootProject.libs.spring.boot)
     implementation(rootProject.libs.spring.boot.autoconfigure)
 }

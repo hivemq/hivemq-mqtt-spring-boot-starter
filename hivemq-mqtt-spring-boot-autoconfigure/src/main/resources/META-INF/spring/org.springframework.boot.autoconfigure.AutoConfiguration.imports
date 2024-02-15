@@ -1,1 +1,1 @@
-net.skobow.spring.hivemq.autoconfigure.HiveMQMqttAutoConfiguration
+com.hivemq.client.spring.autoconfigure.HiveMQMqttAutoConfiguration

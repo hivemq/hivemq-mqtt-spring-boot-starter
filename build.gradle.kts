@@ -9,7 +9,7 @@ plugins {
 allprojects {
     apply(plugin = "maven-publish")
 
-    group = "net.skobow"
+    group = "com.hivemq"
     description = "Spring Boot Starter to integrate HiveMQ MQTT Client SDK"
 
     publishing {
