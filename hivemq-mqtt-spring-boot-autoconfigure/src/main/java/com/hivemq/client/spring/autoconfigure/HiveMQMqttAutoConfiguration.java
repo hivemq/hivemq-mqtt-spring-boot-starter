@@ -17,7 +17,11 @@
 package com.hivemq.client.spring.autoconfigure;
 
 import com.hivemq.client.mqtt.mqtt3.Mqtt3AsyncClient;
+import com.hivemq.client.mqtt.mqtt3.Mqtt3BlockingClient;
+import com.hivemq.client.mqtt.mqtt3.Mqtt3RxClient;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5AsyncClient;
+import com.hivemq.client.mqtt.mqtt5.Mqtt5BlockingClient;
+import com.hivemq.client.mqtt.mqtt5.Mqtt5RxClient;
 import com.hivemq.client.mqtt.mqtt5.auth.Mqtt5EnhancedAuthMechanism;
 import com.hivemq.client.spring.config.MqttProperties;
 import com.hivemq.client.spring.factories.Mqtt3ClientFactory;
@@ -33,7 +37,7 @@ import org.springframework.lang.Nullable;
 
 /**
  * Auto configuration for HiveMQ MQTT client.
- * @since 1.0
+ * @since 1.0.0
  * @author Sven Kobow
  */
 @Configuration
@@ -64,6 +68,20 @@ public class HiveMQMqttAutoConfiguration {
         return clientFactory.mqttClient(mqttProperties, enhancedAuthMechanism);
     }
 
+    @Bean(destroyMethod = "disconnect")
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "hivemq.client.mqtt-version", havingValue = "5", matchIfMissing = true)
+    public Mqtt5RxClient mqtt5RxClient(final Mqtt5ClientFactory clientFactory, @Nullable Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
+        return mqtt5AsyncClient(clientFactory, enhancedAuthMechanism).toRx();
+    }
+
+    @Bean(destroyMethod = "disconnect")
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "hivemq.client.mqtt-version", havingValue = "5", matchIfMissing = true)
+    public Mqtt5BlockingClient mqtt5BlockingClient(final Mqtt5ClientFactory clientFactory, @Nullable Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
+        return mqtt5AsyncClient(clientFactory, enhancedAuthMechanism).toBlocking();
+    }
+
     @Bean
     @ConditionalOnProperty(name = "hivemq.client.mqtt-version", havingValue = "3")
     public Mqtt3ClientFactory mqtt3ClientFactory() {
@@ -79,5 +97,19 @@ public class HiveMQMqttAutoConfiguration {
         }
 
         return clientFactory.mqttClient(mqttProperties);
+    }
+
+    @Bean(destroyMethod = "disconnect")
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "hivemq.client.mqtt-version", havingValue = "3")
+    public Mqtt3RxClient mqtt3RxClient(final Mqtt3ClientFactory clientFactory) {
+        return mqtt3AsyncClient(clientFactory).toRx();
+    }
+
+    @Bean(destroyMethod = "disconnect")
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(name = "hivemq.client.mqtt-version", havingValue = "3")
+    public Mqtt3BlockingClient mqtt3BlockingClient(final Mqtt3ClientFactory clientFactory) {
+        return mqtt3AsyncClient(clientFactory).toBlocking();
     }
 }
