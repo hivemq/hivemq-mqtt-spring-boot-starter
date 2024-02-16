@@ -16,12 +16,10 @@
 
 package com.hivemq.client.spring.autoconfigure;
 
-import com.hivemq.client.mqtt.MqttClient;
 import com.hivemq.client.mqtt.mqtt3.Mqtt3AsyncClient;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5AsyncClient;
 import com.hivemq.client.mqtt.mqtt5.auth.Mqtt5EnhancedAuthMechanism;
 import com.hivemq.client.spring.config.MqttProperties;
-import com.hivemq.client.spring.converter.PasswordConverter;
 import com.hivemq.client.spring.factories.Mqtt3ClientFactory;
 import com.hivemq.client.spring.factories.Mqtt5ClientFactory;
 import org.springframework.beans.factory.BeanCreationException;

@@ -35,9 +35,7 @@ import io.micrometer.common.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanInstantiationException;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -142,9 +140,6 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
         if (configuration.isSSL() && configuration.getSslProperties() != null) {
             final MqttProperties.SslProperties certConfiguration = configuration.getSslProperties();
             final MqttClientSslConfigBuilder sslConfigBuilder = MqttClientSslConfig.builder();
-//            if (configuration.isHttpsHostnameVerificationEnabled()) {
-//                sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
-//            }
 
             try {
                 sslConfigBuilder
@@ -154,10 +149,6 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
             } catch (KeyManagerFactoryCreationException | TrustManagerFactoryCreationException e) {
                 throw new BeanInstantiationException(MqttClientTransportConfig.class, "Error creating SSL configuration", e);
             }
-
-//            if (configuration.isHttpsHostnameVerificationEnabled()) {
-//                sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
-//            }
 
             transportConfigBuilder.sslConfig(sslConfigBuilder.build());
         }

@@ -31,8 +31,6 @@ import io.micrometer.common.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanInstantiationException;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -109,9 +107,6 @@ public final class Mqtt3ClientFactory implements MqttClientFactory {
         if (configuration.isSSL() && configuration.getSslProperties() != null) {
             final MqttProperties.SslProperties sslConfiguration = configuration.getSslProperties();
             final MqttClientSslConfigBuilder sslConfigBuilder = MqttClientSslConfig.builder();
-//            if (configuration.isHttpsHostnameVerificationEnabled()) {
-//                sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
-//            }
 
             try {
                 sslConfigBuilder.trustManagerFactory(getTrustManagerFactory(sslConfiguration));
@@ -123,10 +118,6 @@ public final class Mqtt3ClientFactory implements MqttClientFactory {
             } catch (KeyManagerFactoryCreationException | TrustManagerFactoryCreationException e) {
                 throw new BeanInstantiationException(MqttClientTransportConfig.class, "Error creating SSL configuration", e);
             }
-
-//            if (configuration.isHttpsHostnameVerificationEnabled()) {
-//                sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
-//            }
         }
 
         return transportConfigBuilder.build();

@@ -32,7 +32,7 @@ import java.util.Map;
 
 /**
  * Configuration properties for HiveMQ MQTT client.
- * @since 1.0
+ * @since 1.0.0
  * @author Sven Kobow
  */
 @ConfigurationProperties(prefix = "hivemq.client")

@@ -22,6 +22,11 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A converter for converting a password string to a byte array.
+ * @author Sven Kobow
+ * @since 1.0.0
+ */
 @Component
 @ConfigurationPropertiesBinding
 public class PasswordConverter implements Converter<String, byte[]> {
