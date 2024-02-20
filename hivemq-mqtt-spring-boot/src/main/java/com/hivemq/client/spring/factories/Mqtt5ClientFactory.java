@@ -60,8 +60,11 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
 
         final Mqtt5ClientBuilder clientBuilder = MqttClient.builder()
             .useMqttVersion5()
-            .identifier(configuration.getClientId())
             .transportConfig(buildTransportConfig(configuration));
+
+        if (StringUtils.isNotBlank(configuration.getClientId())) {
+            clientBuilder.identifier(configuration.getClientId());
+        }
 
         if (configuration.isAutomaticReconnect()) {
             clientBuilder.automaticReconnect()

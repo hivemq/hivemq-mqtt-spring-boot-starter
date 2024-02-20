@@ -8,6 +8,14 @@ dependencies {
 
     implementation(rootProject.libs.spring.boot)
     implementation(rootProject.libs.spring.boot.autoconfigure)
+
+    testImplementation(rootProject.libs.spring.boot.starter.test)
+    testImplementation(rootProject.libs.bundles.junit)
+    testImplementation(rootProject.libs.bundles.testconatiners)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 publishing {

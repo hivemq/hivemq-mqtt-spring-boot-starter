@@ -37,7 +37,7 @@ import java.util.Map;
  */
 @ConfigurationProperties(prefix = "hivemq.client")
 public class MqttProperties {
-    private URI serverUri = URI.create(String.format("tcp:/%s:%s", MqttClient.DEFAULT_SERVER_HOST, MqttClient.DEFAULT_SERVER_PORT));
+    private URI serverUri = URI.create(String.format("tcp://%s:%s", MqttClient.DEFAULT_SERVER_HOST, MqttClient.DEFAULT_SERVER_PORT));
     private String clientId = null;
     private int mqttVersion = 5;
     private Duration connectionTimeout = Duration.ofSeconds(MqttClientTransportConfig.DEFAULT_MQTT_CONNECT_TIMEOUT_MS);
