@@ -15,7 +15,7 @@ our [HiveMQ Community Repo](https://github.com/hivemq/hivemq-community).
 
 If you would like to contribute code, do the following:
 - Fork the repository on GitHub
-- Open a pull request targeting the `develop` branch
+- Open a pull request targeting the `main` branch
 
 ### License
 
