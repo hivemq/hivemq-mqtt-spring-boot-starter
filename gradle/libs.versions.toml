@@ -16,7 +16,7 @@ hivemq-testcontainer = { module = "org.testcontainers:hivemq", version.ref = "te
 junit-testcontainers = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
-slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.12" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.13" }
 spring-boot = { module = "org.springframework.boot:spring-boot", version.ref = "spring-boot" }
 spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "spring-boot" }
 spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
