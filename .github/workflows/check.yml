@@ -36,4 +36,4 @@ jobs:
           key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Check
-        run: ./gradlew check javadoc --info
+        run: ./gradlew check javadoc
