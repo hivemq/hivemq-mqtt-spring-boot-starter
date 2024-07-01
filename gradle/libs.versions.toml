@@ -1,6 +1,6 @@
 [versions]
 bcpkix-lts8on = "2.73.6"
-junit = "5.10.2"
+junit = "5.10.3"
 spring-boot = "3.2.4"
 spring = "4.3.8.RELEASE"
 testcontainers = "1.19.7"
